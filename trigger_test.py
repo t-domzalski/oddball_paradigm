@@ -111,9 +111,9 @@ def reset_port(port, value: int):
 
 # generate_list(dlugosc_bloku) - DONE
 
-# funkcja do liczenia ile procent dewiantow faktycznie byl wygenerowany w liscie dla czlowieka
+# funkcja do liczenia ile procent dewiantow faktycznie byl wygenerowany w liscie dla czlowieka - DONE
 
-# tworzenie listy funkcja(no_sounds: int) -- no_sounds wziete z funkcji 
+# tworzenie listy funkcja(no_sounds: int) -- no_sounds wziete z funkcji - DONE
 
 # na podstawie inputu okreslamy liczbe bodzcow ktora ma byc w tym bloku - DONE
 
@@ -129,8 +129,6 @@ def reset_port(port, value: int):
 
 def calculate_stim_count(block_length: int, ioi: float): 
     """
-    Calculate the number of stimuli that can fit in a block.
-
     This function calculates the number of stimuli that can fit in a block
     based on the block length and the inter-onset interval (IOI).
 
@@ -212,3 +210,23 @@ que = generate_stim_list(100)
 que            
 
 # %%
+
+def percentage_of_deviants(stim_list: list, *deviants: str) -> float:
+    """
+    Calculate the percentage of deviant stimuli in the list.
+
+    Parameters:
+        stim_list (list): The list of stimuli.
+        *deviants (str): Variable number of deviant stimuli.
+
+    Returns:
+        float: The percentage of deviant stimuli.
+    """
+    dev_omission_count = sum(stim_list.count(item) for item in deviants)
+    # print(deviants)
+    # print(type(deviants))
+    dev_omission_percentage = (dev_omission_count / len(stim_list)) * 100
+   
+    print(f"Percentage of deviants in a list: {dev_omission_percentage:.2f} %")
+
+percentage_of_deviants(que, "dev", "omission")
